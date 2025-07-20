@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: postgres-config
-  namespace: flask-blog
-data:
-  DATABASE_URL: "postgres://flaskuser:flaskpass@postgres-service:5432/flaskdb" 
