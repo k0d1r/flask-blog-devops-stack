@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Prometheus kendi metriklerini toplar
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Node Exporter - sistem metrikleri
+  - job_name: 'node'
+    static_configs:
+      - targets: ['localhost:9100']
+    scrape_interval: 5s
+    metrics_path: /metrics
+
+  # Flask uygulaması (eğer metrics endpoint'i varsa)
+  - job_name: 'flask-app'
+    static_configs:
+      - targets: ['localhost:30000']
+    scrape_interval: 10s
+    metrics_path: /metrics 
