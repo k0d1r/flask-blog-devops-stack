@@ -1,9 +1,9 @@
-![Architecture Overview](./docs/flask+postgreSQL+docker,ayagakaldırıldı.png)
+![Architecture Overview](./docs/1.png)
 
-![Flask Docker Setup](./docs/fkubernatesyerineflaskdockerile.png)
+![Flask Docker Setup](./docs/2.png)
 
-![Termius + Jenkins](./docs/termius+Jenkins.png)
+![Termius + Jenkins](./docs/3.png)
 
-![Grafana Dashboards](./docs/grafanamonitöringbitti.png)
+![Grafana Dashboards](./docs/4.png)
 
 # Güvenlik için bütün bilgilerle beraber makinalar uçuruldu!
