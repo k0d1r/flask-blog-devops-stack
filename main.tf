@@ -1,8 +1,7 @@
+
 provider "aws" {
   region = "us-east-1"
 }
-
-# aws_vpc
 
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
@@ -10,8 +9,6 @@ resource "aws_vpc" "main" {
     Name = "main_vpc"
   }
 }
-
-# aws_subnet
 
 resource "aws_subnet" "main" {
   vpc_id                  = aws_vpc.main.id
@@ -23,16 +20,12 @@ resource "aws_subnet" "main" {
   }
 }
 
-# aws_internet_gateway
-
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
   tags = {
     Name = "main_igw"
   }
 }
-
-# aws_route_table
 
 resource "aws_route_table" "main" {
   vpc_id = aws_vpc.main.id
@@ -46,8 +39,6 @@ resource "aws_route_table" "main" {
     Name = "main_route_table"
   }
 }
-
-# aws_route_table_association
 
 resource "aws_route_table_association" "a" {
   subnet_id      = aws_subnet.main.id
@@ -75,6 +66,14 @@ resource "aws_security_group" "blog_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "Flask App"
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -87,15 +86,13 @@ resource "aws_security_group" "blog_sg" {
   }
 }
 
-# aws_instance
-
 resource "aws_instance" "blog" {
-  ami                         = "ami-0c02fb55956c7d316"
+  ami                         = "ami-0150ccaf51ab55a51"
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.main.id
   vpc_security_group_ids      = [aws_security_group.blog_sg.id]
   associate_public_ip_address = true
-  key_name                    = "k0d1r-key" 
+  key_name                    = "flask-blog-devops-stack"
   tags = {
     Name = "blog-instance"
   }
