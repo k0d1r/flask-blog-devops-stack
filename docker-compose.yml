@@ -1,0 +1,27 @@
+# version: "3.8" artık gerekli değilmiş!
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: flaskuser
+      POSTGRES_PASSWORD: flaskpass
+      POSTGRES_DB: flaskdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    image: flask-blog:latest
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://flaskuser:flaskpass@db:5432/flaskdb
+    ports:
+      - "5000:5000"
+
+volumes:
+  pgdata:
