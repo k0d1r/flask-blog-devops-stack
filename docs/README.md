@@ -1,9 +1,9 @@
-![Architecture Overview](./docs/1.png)
+![Architecture Overview](./1.png)
 
-![Flask Docker Setup](./docs/2.png)
+![Flask Docker Setup](./2.png)
 
-![Termius + Jenkins](./docs/3.png)
+![Termius + Jenkins](./3.png)
 
-![Grafana Dashboards](./docs/4.png)
+![Grafana Dashboards](./4.png)
 
 # Güvenlik için bütün bilgilerle beraber makinalar uçuruldu!
