@@ -1,0 +1,6 @@
+/.terraform/
+*.pem
+# This file is used to ignore files and directories in the project.
+# It is a common practice to include sensitive files or directories that should not be tracked by Git.
+flask-blog-devops-stack.pem
+*.tar.gz
